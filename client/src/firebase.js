@@ -1,4 +1,4 @@
-import * as firebase  from 'firebase/'
+import firebase from 'firebase';
 const firebaseConfig = {
     apiKey: "AIzaSyB-2rWRIkdd5Gr-9aYIS7p-z90vjvAPTKw",
     authDomain: "discord-clone-a2d7b.firebaseapp.com",
@@ -9,7 +9,9 @@ const firebaseConfig = {
     measurementId: "G-27B2MB9LHF"
   };
 
-firebase.initializeApp(firebaseConfig)
-
-export const auth = firebase.auth()
-export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+  const firebaseApp = firebase.initializeApp(firebaseConfig);
+  const db = firebaseApp.firestore();
+  const auth = firebase.auth();
+  const provider = new firebase.auth.GoogleAuthProvider();
+  
+  export { db ,auth, provider };
