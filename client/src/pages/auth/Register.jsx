@@ -16,7 +16,7 @@ const Register = () => {
         `Email is send to ${email}. Click the link to complete registration`
       );
       //   save user email in localstorage
-      window.localStorage.setItem("Email for registration", email);
+      window.localStorage.setItem("EmailforRegistration", email);
 
       // clear state
       setEmail("");
@@ -39,7 +39,10 @@ const Register = () => {
   return (
     <div className="container p-5">
       <div className="row">
-        <div className="col-md-6 offset-md-3">{registerform()}</div>
+        <div className="col-md-6 offset-md-3">
+          <h4>Register</h4>
+          {registerform()}
+        </div>
       </div>
     </div>
   );
