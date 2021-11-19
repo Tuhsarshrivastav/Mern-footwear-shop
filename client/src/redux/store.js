@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { userReducer } from "./reducers/userReducer";
 
 const reducer = combineReducers({
-  userReducer,
+  user: userReducer,
 });
 const initialState = {};
 const middleware = [thunk];
