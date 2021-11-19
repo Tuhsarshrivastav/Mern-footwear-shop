@@ -3,12 +3,33 @@ import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { MailOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-const Login = () => {
+import { useDispatch } from "react-redux";
+const Login = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const registerform = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
+      setLoading(true);
+      try {
+        const result = await auth.signInWithEmailAndPassword(email, password);
+        const { user } = result;
+        const idtokenResult = await user.getIdTokenResult;
+        dispatch({
+          type: "LOGGED_IN__USER",
+          payload: {
+            email: user.email,
+            token: idtokenResult.token,
+          },
+        });
+        history.push("/");
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message);
+        setLoading(false);
+      }
     };
     return (
       <form onSubmit={handleSubmit}>
@@ -40,9 +61,9 @@ const Login = () => {
           shape="round"
           size="large"
           icon={<MailOutlined />}
-          disabled={!email || password.length < 6}
+          disabled={!email || password.length < 6 || loading}
         >
-          Login with Email Password
+          {loading ? "Please Wait " : "Login with Email Password"}
         </Button>
       </form>
     );

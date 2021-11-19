@@ -21,7 +21,7 @@ function App() {
           type: "LOGGED_IN__USER",
           payload: {
             email: user.email,
-            token: idtokenResult,
+            token: idtokenResult.token,
           },
         });
       }
