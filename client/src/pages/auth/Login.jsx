@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { auth } from "../../firebase";
+import { auth, provider } from "../../firebase";
 import { toast } from "react-toastify";
-import { MailOutlined } from "@ant-design/icons";
+import { GoogleOutlined, MailOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useDispatch } from "react-redux";
 const Login = ({ history }) => {
@@ -9,6 +9,27 @@ const Login = ({ history }) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+
+  const googleLogin = async () => {
+    auth
+      .signInWithPopup(provider)
+      .then(async (result) => {
+        const { user } = result;
+        const idtokenResult = await user.getIdTokenResult;
+        dispatch({
+          type: "LOGGED_IN__USER",
+          payload: {
+            email: user.email,
+            token: idtokenResult.token,
+          },
+        });
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
+  };
   const registerform = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -72,8 +93,23 @@ const Login = ({ history }) => {
     <div style={{ marginTop: "110px" }} className="container p-5 ">
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          <h4>Login</h4>
+          {loading ? (
+            <h4 className="text-danger">Loading...</h4>
+          ) : (
+            <h4>Login</h4>
+          )}
           {registerform()}
+          <Button
+            onClick={googleLogin}
+            type="danger"
+            className="mb-3"
+            block
+            shape="round"
+            size="large"
+            icon={<GoogleOutlined />}
+          >
+            Login With Google
+          </Button>
         </div>
       </div>
     </div>
