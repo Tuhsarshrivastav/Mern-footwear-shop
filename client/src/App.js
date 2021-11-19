@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import forgotPassword from "./pages/auth/ForgotPassword";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,10 +35,11 @@ function App() {
       <Navbar />
       <ToastContainer />
       <Switch>
+        <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/forgot/password" component={forgotPassword} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/register/complete" component={RegisterComplete} />
-        <Route exact path="/" component={Home} />
       </Switch>
     </Router>
   );
