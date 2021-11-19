@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { auth, provider } from "../../firebase";
 import { toast } from "react-toastify";
 import { GoogleOutlined, MailOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
 const Login = ({ history }) => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+
+
+  const { user } = useSelector((state) => ({ ...state }));
+
+  useEffect(() => {
+    if (user && user.token) {
+      history.push("/");
+    }
+  });
 
   const googleLogin = async () => {
     auth

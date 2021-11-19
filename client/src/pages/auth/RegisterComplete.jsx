@@ -31,9 +31,7 @@ const RegisterConplete = ({ history }) => {
           window.localStorage.removeItem("EmailforRegistration");
           let user = auth.currentUser;
           await user.updatePassword(password);
-          const idTokenResult = await user.getIdTokenResult();
-          console.log(idTokenResult, user);
-          //   history.push("/");
+          await user.getIdTokenResult();
         }
       } catch (error) {
         toast.error(error.message);

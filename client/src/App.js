@@ -17,7 +17,7 @@ function App() {
     const unsubcribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const idtokenResult = await user.getIdTokenResult();
-        console.log(idtokenResult);
+        
         dispatch({
           type: "LOGGED_IN__USER",
           payload: {
@@ -29,7 +29,7 @@ function App() {
     });
     // clean up
     return () => unsubcribe;
-  }, []);
+  }, [dispatch]);
   return (
     <Router>
       <Navbar />
