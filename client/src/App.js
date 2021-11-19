@@ -6,8 +6,29 @@ import Home from "./pages/Home";
 import RegisterComplete from "./pages/auth/RegisterComplete";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { auth } from "./firebase";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubcribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const idtokenResult = await user.getIdTokenResult();
+        console.log(idtokenResult);
+        dispatch({
+          type: "LOGGED_IN__USER",
+          payload: {
+            email: user.email,
+            token: idtokenResult,
+          },
+        });
+      }
+    });
+    // clean up
+    return () => unsubcribe;
+  }, []);
   return (
     <Router>
       <Navbar />
