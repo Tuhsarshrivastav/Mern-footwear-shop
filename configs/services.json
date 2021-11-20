@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "discord-clone-a2d7b",
+  "private_key_id": "0e741913924c9a1a18a500e7e17746405d11b106",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDgb/NyYTv18aXy\nUOBlv38dnJeG2IBE2eBWdX4ZSNzRot1RgZxh07PsyDa9cq+GId3L+X6RQPNNb7JJ\nB+Sfb3WA0bRpRHdtp1DWBwkFQAqwjMQuAyCnm4x9z8F++s96VAitJd5VbqRaEPXC\nQ7i/zazdovRsxEZbaoCErNBSsK0pVkVa3eR8Q1zSY/I3NG9PxHWLB/ZLaCirg72P\nPPHt/N3+4dwtj/ytJqmhJPELLEoUMIzC28tCtvWiegGXkWj6uq+i+Bl7YBeWx5F1\nLC9B867mNpR2OZHYrd3NF5PoHuEqEdazZpFJvleLO5l0FYrvigF/k+gy6zV5ihii\nZO29uRRZAgMBAAECggEAIdWGqgLSBvrhpTS/i18xws1JQ40OUzLUQLxwINAs59aJ\nTkD/ifjf+i1ZoTgxkUM4PEh1peCYfR8+TYeo1cc3+85BSBBH/8oWI9nGKJo1slVa\nOsSCbvoCVTIVbbbSQdL6xt17Vb46/Q/q+Jj8eD/BlFz9Q4tYPu5Ahx/FPP4A8MbW\nIc9+qGwxNDclwU7BJaWfeuToQSmfo9LBvsWWjBN1qb174Axk3IRWhhdwr9Gdfjjk\nhNuZyv5T7pBrOaksN18GN/MKEEKNTOvllXmI69GrpROg2kVdAgFsxwT08RE0LpSy\nLUX8RcfkmZvS4eiTaKWx3/RQWsXOk8qXlSoHPqUWDQKBgQDyU88xpVPLZZZclhyZ\nE3T92nTuM3kHMv0J+oC4OML+iEZ8Hr5lkXXhRmbdCIVr9ODW+7nnT34owMDgaX0H\nF4XhuwDErOHYEYuZpWvAQjhwKfNnYdwyg/onfcEI3QzVzEyXQ15zc2Fyzia5mS+9\nXWaxrQnIPbFQAY7h81X2v3jvjQKBgQDtGbyDq3DMf9UeedsyzQG1xgGStKna0Vjo\nT3INPUf5vtTorq+soUrBNGaX62a8IWnFWB/BWw2OSeKX9o9p7Oq4hEwJMgDs1/9K\nFzMnQpFnvz3cDNabAI5NKyp38h7OTgNP9QF5u3z+nHya7+tl7oKTPzovodanA0IX\nby1Slg0u/QKBgQDpTTcVnQ5nrI5u5TbzSYBBRql9C6FiBP0JNlvnAP76/0idBxxX\nvQu4r4cpFqMdpM0zLXd181qK8cjARc9RnJwRD3FV6Pwmgf3dFx3+I8MiecEVr2nI\nWLfmfXPzjJ5m2CKFHx84F8WiOkeeOJV1ww6z0NyyJHMpi9Z8Q0JoJT/RoQKBgQCR\nWWWnkkHkG7mapTkrO2IA/RGZzgcSjaPjRlC0rQyincoHmo83VOlu56C9ISIp0pH0\n2MEe16LHx6ORZSUl2odJ9lBmkrDegMuPsAk72CMrZqGVdIlbHEwgIoY2Ycdg0ZJW\nQexVpApMS8JXeRzlsAF8IxaYfK4KVIT/uLggGLycQQKBgQCA9tUrpQN0gsPv79M7\n4Q/FrRGQL6+fcLTAFB7K+zJYy0y1BakEHud9sNRmWxeMZ2pclam/XqIsIykkt/ok\n9S8XbfRk8EOiBTbHeR659sphrfFgyWURQsBVqJaxpnxJDZsX7j81G/5bM7YfzcAx\nbFO0iPFhc6CqprppoDSKZRH5Hg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-7uo6p@discord-clone-a2d7b.iam.gserviceaccount.com",
+  "client_id": "101399944846859230424",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-7uo6p%40discord-clone-a2d7b.iam.gserviceaccount.com"
+}
