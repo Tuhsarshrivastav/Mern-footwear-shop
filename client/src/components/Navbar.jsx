@@ -1,23 +1,29 @@
+import React, { useState } from "react";
 import { Menu } from "antd";
 import {
   LoginOutlined,
   LogoutOutlined,
-  MailOutlined,
+  HomeOutlined,
   SettingOutlined,
   UserAddOutlined,
 } from "@ant-design/icons";
-
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
-const { SubMenu } = Menu;
 
-const Navbar = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+const { SubMenu, Item } = Menu;
 
+const Header = () => {
+  const handleClick = (e) => {
+    setCurrent(e.key);
+  };
+  const [current, setCurrent] = useState("home");
+  let dispatch = useDispatch();
+
+  let { user } = useSelector((state) => ({ ...state }));
+
+  let history = useHistory();
   const logout = () => {
     firebase.auth().signOut();
     dispatch({
@@ -26,50 +32,37 @@ const Navbar = () => {
     });
     history.push("/login");
   };
-  const [current, setCurrent] = useState("home");
-  const handleClick = (e) => {
-    setCurrent(e.key);
-  };
-  const { user } = useSelector((state) => ({ ...state }));
   return (
-    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-      <Menu.Item key="home" icon={<MailOutlined />}>
-        <Link to="/">Home {JSON.stringify(user?.email)}</Link>
-      </Menu.Item>
-
-      {!user ? (
-        <>
-          <Menu.Item
-            key="register"
-            className="flot-right"
-            icon={<UserAddOutlined />}
-          >
-            <Link to="/register">Register</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="login"
-            icon={<LoginOutlined />}
-            className="float-right"
-          >
-            <Link to="/login">Login</Link>
-          </Menu.Item>
-        </>
-      ) : (
+    <Menu onClick={handleClick} selectedKeys={[current]} mode='horizontal'>
+      <Item key='home' icon={<HomeOutlined />}>
+        <Link to='/'>Home</Link>
+      </Item>
+      {!user && (
+        <Item key='register' icon={<UserAddOutlined />} className='float-right'>
+          <Link to='/register'>Register</Link>
+        </Item>
+      )}
+      {!user && (
+        <Item key='login' icon={<LoginOutlined />} className='float-right'>
+          <Link to='/login'>Login</Link>
+        </Item>
+      )}
+      {user && (
         <SubMenu
-          key="SubMenu"
+          key='SubMenu'
           icon={<SettingOutlined />}
           title={user.email && user.email.split("@")[0]}
-          className="float-right"
+          className='float-right'
         >
-          <Menu.Item key="setting:1">Option 1</Menu.Item>
-          <Menu.Item key="setting:2">Option 2</Menu.Item>
-          <Menu.Item icon={<LogoutOutlined />} key="setting:3" onClick={logout}>
+          <Item key='setting:1'>Option 1</Item>
+          <Item key='setting:2'>Option 2</Item>
+          <Item icon={<LogoutOutlined />} onClick={logout}>
             Logout
-          </Menu.Item>
+          </Item>
         </SubMenu>
       )}
     </Menu>
   );
 };
 
-export default Navbar;
+export default Header;

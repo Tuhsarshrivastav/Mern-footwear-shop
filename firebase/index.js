@@ -6,3 +6,5 @@ var serviceAccount = require("../configs/services.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
+
+module.exports = admin
