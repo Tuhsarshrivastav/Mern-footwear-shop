@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import { CreateOrUpdate } from "../../functions/auth";
 
 const Login = ({ history }) => {
-  const [email, setEmail] = useState("yusufkasmani491@gmail.com");
-  const [password, setPassword] = useState("1234567");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const { user } = useSelector((state) => ({ ...state }));
