@@ -59,26 +59,26 @@ const RegisterComplete = ({ history }) => {
   }, []);
   const completeRegisterForm = () => (
     <form onSubmit={handleSubmit}>
-      <input type="email" className="form-control" value={email} disabled />
+      <input type='email' className='form-control' value={email} disabled />
       <input
-        type="password"
-        className="form-control"
-        placeholder="Password"
+        type='password'
+        className='form-control'
+        placeholder='Password'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         autoFocus
       />
       <br />
-      <button type="submit" className="btn btn-raised">
+      <button type='submit' className='btn btn-raised'>
         Complete Registration
       </button>
     </form>
   );
 
   return (
-    <div className="container p-5" >
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
+    <div className='container p-5'>
+      <div className='row'>
+        <div className='col-md-6 offset-md-3'>
           <h4>Register Complete</h4>
           {completeRegisterForm()}
         </div>

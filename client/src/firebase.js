@@ -1,17 +1,18 @@
-import firebase from 'firebase';
-const firebaseConfig = {
-    apiKey: "AIzaSyB-2rWRIkdd5Gr-9aYIS7p-z90vjvAPTKw",
-    authDomain: "discord-clone-a2d7b.firebaseapp.com",
-    projectId: "discord-clone-a2d7b",
-    storageBucket: "discord-clone-a2d7b.appspot.com",
-    messagingSenderId: "148086133792",
-    appId: "1:148086133792:web:93294a12602a9c5b8b5845",
-    measurementId: "G-27B2MB9LHF"
-  };
+//import * as firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
 
-  const firebaseApp = firebase.initializeApp(firebaseConfig);
-  const db = firebaseApp.firestore();
-  const auth = firebase.auth();
-  const provider = new firebase.auth.GoogleAuthProvider();
-  
-  export { db ,auth, provider };
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCbeHWeF2ZKNhNAHSw46V7KAPiyVkkFsnw",
+  authDomain: "ecommerce-57fba.firebaseapp.com",
+  projectId: "ecommerce-57fba",
+  storageBucket: "ecommerce-57fba.appspot.com",
+  messagingSenderId: "624345254297",
+  appId: "1:624345254297:web:d98fc0727335756590ab08",
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+export const auth = firebase.auth();
+export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();

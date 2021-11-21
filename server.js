@@ -1,31 +1,38 @@
-//dependencys
-require("dotenv").config();
 const express = require("express");
-const app = express();
-const cors = require("cors");
+const mongoose = require("mongoose");
 const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const { readdirSync } = require("fs");
+require("dotenv").config();
 
-//imports
-const Database = require("./configs/database");
+// import route
+const authRoutes = require("./routes/auth");
 
-//db config
-Database();
+// app
+const app = express();
 
-//middlewares
-app.use(express.json({ limit: "2mb" }));
-app.use(cors());
+// db
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("DB CONNECTED"))
+  .catch((error) => console.log("DB CONNECTION ERROR", error));
+
+// Middlewares
 app.use(morgan("dev"));
+app.use(bodyParser.json({ limit: "2mb" }));
+app.use(cors());
 
-//routes
-readdirSync("./routes").map((r) =>
-  app.use("/api", require("./routes/" + r))
-);
+// routes middleware
 
-//port
-const PORT = process.env.PORT || 5000;
+readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
 
-//server listen
-app.listen(PORT, () => {
-  console.log(`Server is running : ${PORT}`);
-});
+// Port
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => console.log(`Server is running on port ${port}`));
